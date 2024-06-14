@@ -12,6 +12,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import Footer from '../Components/Footer';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiTwotoneCloseCircle } from "react-icons/ai";
+import SpinnerLoader from '../Components/SpinnerLoader';
 
 const CandidateSearch = () => {
   const [selectedLocations, setSelectedLocations] = useState([]);
@@ -97,7 +98,7 @@ const CandidateSearch = () => {
       // );
 
       const markedCandidatesid = markedCandidate.map((candidate) => candidate.id)
-      const filteredCandidates =allCandidates.filter(candidate => !markedCandidatesid.includes(candidate.id)).map(candidate => candidate);
+      const filteredCandidates = allCandidates.filter(candidate => !markedCandidatesid.includes(candidate.id)).map(candidate => candidate);
       // console.log("filteredCandidates :" , filteredCandidates);
 
       setCandidates(filteredCandidates);
@@ -194,42 +195,42 @@ const CandidateSearch = () => {
         <div className="md:w-3/4 w-full">
           <h2 className="md:text-3xl sm:text-2xl text-xl font-bold mb-4 text-red-700" data-aos="slide-down">Search Candidates</h2>
           <button
-        className="md:hidden absolute top-2 right-4 bg-white p-2 rounded-full shadow-lg"
-        onClick={toggleFullView}
-      >
-        <GiHamburgerMenu className="text-gray-700" size={24} />
-      </button>
+            className="md:hidden absolute top-2 right-4 bg-white p-2 rounded-full shadow-lg"
+            onClick={toggleFullView}
+          >
+            <GiHamburgerMenu className="text-gray-700" size={24} />
+          </button>
 
-          <div className="flex flex-col mb-4" data-aos="fade-up" data-aos-delay="200">
-          <div className='w-full flex md:flex-row flex-col p'>
-            <select
-              value=""
-              onChange={(e) => handleLocationSelect(e.target.value)}
-              className="md:mr-2 md:mb-0 mb-2 p-2 border rounded  md:w-1/3 w-full"
-            >
-              <option value="">Select Location</option>
-              {locationOptions.map((loc, index) => (
-                <option key={index} value={loc}>{loc}</option>
-              ))}
-            </select>
-            <select
-              value=""
-              onChange={(e) => handleJobRoleSelect(e.target.value)}
-              className="md:mr-2 md:mb-0 mb-2 p-2 border rounded md:w-1/3 w-full"
-            >
-              <option value="">Select Job Role</option>
-              {jobRoleOptions.map((role, index) => (
-                <option key={index} value={role}>{role}</option>
-              ))}
-            </select>
-            <button onClick={searchCandidates} className="bg-red-500 text-white md:px-4 px-2 py-2 md:py-2 rounded">Search</button>
+          {(candidates.length > 0) ? (<><div className="flex flex-col mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div className='w-full flex md:flex-row flex-col p'>
+              <select
+                value=""
+                onChange={(e) => handleLocationSelect(e.target.value)}
+                className="md:mr-2 md:mb-0 mb-2 p-2 border rounded  md:w-1/3 w-full"
+              >
+                <option value="">Select Location</option>
+                {locationOptions.map((loc, index) => (
+                  <option key={index} value={loc}>{loc}</option>
+                ))}
+              </select>
+              <select
+                value=""
+                onChange={(e) => handleJobRoleSelect(e.target.value)}
+                className="md:mr-2 md:mb-0 mb-2 p-2 border rounded md:w-1/3 w-full"
+              >
+                <option value="">Select Job Role</option>
+                {jobRoleOptions.map((role, index) => (
+                  <option key={index} value={role}>{role}</option>
+                ))}
+              </select>
+              <button onClick={searchCandidates} className="bg-red-500 text-white md:px-4 px-2 py-2 md:py-2 rounded">Search</button>
             </div>
             <div className="flex flex-wrap md:w-3/4 w-full h-min mt-2">
               {selectedLocations.map((loc, index) => (
                 <div key={index} className="bg-blue-200 rounded-md px-2 py-1 m-1 flex items-center">
                   {loc}
                   <button onClick={() => removeSelectedLocation(loc)} className="ml-2 text-red-600">
-                    <IoCloseSharp/>
+                    <IoCloseSharp />
                   </button>
                 </div>
               ))}
@@ -237,7 +238,7 @@ const CandidateSearch = () => {
                 <div key={index} className="bg-green-200 rounded-md px-2 py-1 m-1 flex items-center">
                   {role}
                   <button onClick={() => removeSelectedJobRole(role)} className="ml-2 text-red-600">
-                    <IoCloseSharp/>
+                    <IoCloseSharp />
                   </button>
                 </div>
               ))}
@@ -255,8 +256,9 @@ const CandidateSearch = () => {
               </div>
             ))}
           </div>
+          </>) : (<SpinnerLoader/>)}
         </div>
-        <div className={`md:w-1/4 md:p-4 h-[75vh] w-full hidden md:h-fit bg-white shadow-lg rounded md:mt-4 mb-5 ml-4`} data-aos="slide-left" data-aos-delay="200">
+        <div className={`md:w-1/4 md:p-4 h-[75vh] md:block w-full hidden md:h-fit bg-white shadow-lg rounded md:mt-4 mb-5 ml-4`} data-aos="slide-left" data-aos-delay="200">
           <h3 className="text-2xl font-bold text-red-700 mb-4">Marked Candidate List</h3>
           {markedCandidates.length === 0 ? (
             <div className="text-center h-96 flex flex-col justify-center items-center text-gray-500">
@@ -281,14 +283,14 @@ const CandidateSearch = () => {
           )}
         </div>
         {/* Full-screen view for md and above */}
-       {isFullViewOpen && <div className={`md:w-1/4 md:p-4 w-full p-2 absolute top-1 right-1 md:h-fit bg-white shadow-lg rounded mb-5 ml-4`} data-aos="slide-left" data-aos-delay="200">
+        {isFullViewOpen && <div className={`md:w-1/4 md:p-4 w-full p-2 absolute top-1 right-1 md:h-fit bg-white shadow-lg rounded mb-5 ml-4`} data-aos="slide-left" data-aos-delay="200">
           <h3 className="text-2xl font-bold text-red-700 mb-4">Marked Candidate List</h3>
           <button
-              className="fixed top-1 right-1 text-3xl"
-              onClick={toggleFullView}
-            >
-              <AiTwotoneCloseCircle />
-            </button>
+            className="fixed top-1 right-1 text-3xl"
+            onClick={toggleFullView}
+          >
+            <AiTwotoneCloseCircle />
+          </button>
           {markedCandidates.length === 0 ? (
             <div className="text-center h-96 flex flex-col justify-center items-center text-gray-500">
               <FiAlertCircle className="mx-auto text-7xl mb-5 animate-bounce text-red-500" />
@@ -312,7 +314,7 @@ const CandidateSearch = () => {
           )}
         </div>}
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
