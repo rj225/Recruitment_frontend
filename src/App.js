@@ -13,14 +13,14 @@ function App() {
   return (
     <Router>
       <CompanyProvider>
-      <ToastContainer />
-      <Routes>
-        <Route exact path="/" element={<Homepage/>} />
-        <Route path='/testing' element={<Testing/>}/>
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/candidate-search" element={<CandidateSearch/>} />
-      </Routes>
+        <ToastContainer pauseOnHover={false} theme="dark" />
+        <Routes>
+          <Route exact path="/" element={<Homepage />} />
+          <Route path='/testing' element={<Testing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/candidate-search" element={<CandidateSearch />} />
+        </Routes>
       </CompanyProvider>
     </Router>
   );

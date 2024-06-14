@@ -1,5 +1,12 @@
 import React from 'react';
 import './Partner.css'
+import netflix from '../pages/asset/netflix.png'
+import amazon from '../pages/asset/amazon.png'
+import face from '../pages/asset/face.png'
+import google from '../pages/asset/google.png'
+import micro from '../pages/asset/micro.png'
+import x from '../pages/asset/twitter.png'
+
 const Partner = () => {
   return (
     <section className="mt-20 bg-white py-10 w-screen">
@@ -8,22 +15,22 @@ const Partner = () => {
         <div className="overflow-hidden w-full">
           <div className="flex justify-center h-full items-center gap-8 md:gap-16 lg:gap-20 xl:gap-24 w-full animate-marquee">
             <div className="flex-shrink-0" data-aos="flip-left">
-              <img src="path/to/company-logo1.png" alt="Company 1 Logo" className="h-12 sm:h-16 lg:h-20 xl:h-24 w-auto object-contain" />
+              <img src={google} alt="Company 1 Logo" className="h-6 sm:h-8 lg:h-12 xl:h-16 w-auto object-contain" />
             </div>
             <div className="flex-shrink-0" data-aos="flip-right">
-              <img src="path/to/company-logo2.png" alt="Company 2 Logo" className="h-12 sm:h-16 lg:h-20 xl:h-24 w-auto object-contain" />
+              <img src={netflix} alt="Company 2 Logo" className="h-6 sm:h-8 lg:h-12 xl:h-16 w-auto object-contain" />
             </div>
             <div className="flex-shrink-0" data-aos="flip-left">
-              <img src="path/to/company-logo3.png" alt="Company 3 Logo" className="h-12 sm:h-16 lg:h-20 xl:h-24 w-auto object-contain" />
+              <img src={x} alt="Company 3 Logo" className="h-6 sm:h-8 lg:h-12 xl:h-16 w-auto object-contain" />
             </div>
             <div className="flex-shrink-0" data-aos="flip-right">
-              <img src="path/to/company-logo4.png" alt="Company 4 Logo" className="h-12 sm:h-16 lg:h-20 xl:h-24 w-auto object-contain" />
+              <img src={micro} alt="Company 4 Logo" className="h-6 sm:h-8 lg:h-12 xl:h-16 w-auto object-contain" />
             </div>
             <div className="flex-shrink-0" data-aos="flip-left">
-              <img src="path/to/company-logo5.png" alt="Company 5 Logo" className="h-12 sm:h-16 lg:h-20 xl:h-24 w-auto object-contain" />
+              <img src={face} alt="Company 5 Logo" className="h-6 sm:h-8 lg:h-12 xl:h-16 w-auto object-contain" />
             </div>
             <div className="flex-shrink-0" data-aos="flip-right">
-              <img src="path/to/company-logo6.png" alt="Company 6 Logo" className="h-12 sm:h-16 lg:h-20 xl:h-24 w-auto object-contain" />
+              <img src={amazon} alt="Company 6 Logo" className="h-6 sm:h-8 lg:h-12 xl:h-16 w-auto object-contain" />
             </div>
           </div>
         </div>

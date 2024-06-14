@@ -2,7 +2,7 @@ import React from 'react';
 
 function Contact() {
   return (
-    <section className="mt-20 w-full bg-gray-50 py-10">
+    <section className="mt-20 w-full bg-gray-50 py-10 mb-10">
       <h3 className="lg:text-4xl md:text-3xl sm:text-2xl text-xl text-red-900 text-center font-bold mb-6">Get in Touch</h3>
       <div className="flex justify-center items-center px-4 sm:px-6 lg:px-8">
         <form className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg" data-aos="flip-left">
