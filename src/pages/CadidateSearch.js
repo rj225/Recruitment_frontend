@@ -1,7 +1,8 @@
 import React, { useState ,useEffect } from 'react';
 import axios from 'axios';
-import CandidateCard from './CandidateCard';
+import CandidateCard from '../Components/CandidateCard';
 import AOS from 'aos';
+import Navbar from '../Components/Navbar';
 
 const CandidateSearch = () => {
   const [location, setLocation] = useState('');
@@ -12,6 +13,16 @@ const CandidateSearch = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
+
+  useEffect(() => allusers)
+  const allusers = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_BASIC_API_URL}/users`);
+      setCandidates(response.data[0]);
+    } catch (error) {
+      
+    }
+  }
 
   const searchCandidates = async () => {
     try {
@@ -30,6 +41,8 @@ const CandidateSearch = () => {
 
 
   return (
+    <>
+    <Navbar/>
     <div className="min-h-screen bg-red-100 p-6 flex">
     <div className="w-3/4">
       <h2 className="text-3xl font-bold mb-4 text-red-700" data-aos="slide-down">Search Candidates</h2>
@@ -74,6 +87,7 @@ const CandidateSearch = () => {
       </ul>
     </div>
   </div>
+  </>
   );
 };
 

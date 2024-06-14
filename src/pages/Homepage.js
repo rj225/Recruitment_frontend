@@ -9,6 +9,7 @@ import Partner from '../Components/Partner';
 import 'aos/dist/aos.css';
 import Contact from '../Components/Contact';
 import Testimonial from '../Components/Testimonial';
+import { Link } from 'react-router-dom';
 
 const Homepage = () => {
 
@@ -26,7 +27,7 @@ const Homepage = () => {
           <h2 className="md:text-4xl sm:text-3xl text-2xl font-bold mb-4">Efficient Hiring for Managers and HR Professionals</h2>
           <p className="md:text-xl sm:text-lg text-base text-gray-500 mb-6">Streamline your recruitment process with our comprehensive solution.</p>
           <div className='flex justify-center items-center w-full sm:h-96 my-5'><img src={img} alt='img' className='shadow-xl object-cover rounded-3xl h-full sm:w-7/12' /></div>
-          <button className="bg-red-600 text-lg text-white md:px-6 sm:px-5 px-4 md:py-3 sm:py-2 py-1 hover:ring-1 hover:scale-105 transition-all duration-500 hover:bg-transparent hover:text-red-800 hover:ring-red-500 rounded-lg">Start Hiring</button>
+          <Link to="/candidate-search" ><button className="bg-red-600 text-lg text-white md:px-6 sm:px-5 px-4 md:py-3 sm:py-2 py-1 hover:ring-1 hover:scale-105 transition-all duration-500 hover:bg-transparent hover:text-red-800 hover:ring-red-500 rounded-lg">Start Hiring</button></Link>
         </div>
 
         <section className="mt-20">

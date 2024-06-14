@@ -4,24 +4,42 @@ import { Link } from 'react-router-dom';
 import '../Components/App.css'
 import AOS from 'aos';
 import { useEffect } from 'react';
+import { useCompanyContext } from '../Components/CompanyContext';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useCompanyContext(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
-      console.log(response.data);
+      const response = await toast.promise(
+        axios.post(`${process.env.REACT_APP_BASIC_API_URL}/login`, { c_email: email, password },{ withCredentials: true }),
+        {
+          pending: 'Logging in...',
+          error: 'Login failed. Please check your credentials.',
+        }
+      );
+      
+      login(response.data.data.company);
+      if (response.data.data.company) {
+        toast.success(`Welcome ${response.data.data.company.c_name}`)
+        navigate("/candidate-search");
+      }
+      
     } catch (err) {
       console.error(err);
     }
   };
-
+  
   return (
     <div className="h-screen flex">
       <div className="hidden lg:flex w-full lg:w-1/2 login_img_section justify-around items-center" data-aos="slide-left" data-aos-delay="200">
