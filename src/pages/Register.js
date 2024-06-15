@@ -29,7 +29,7 @@ const Register = () => {
       {
         pending: 'Registering in...',
         success: "Registered",
-        error: 'Registration failed.',
+        error: 'Registration failed. Email already exist',
       })
       navigate("/login");
     } catch (err) {
